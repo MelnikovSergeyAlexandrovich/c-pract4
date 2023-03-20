@@ -1,4 +1,7 @@
-﻿using System.Windows;
+﻿using System;
+using System.Data;
+using System.Windows;
+using System.Windows.Forms;
 using SecondPractTask.dataWPFDataSetTableAdapters;
 
 namespace SecondPractTask
@@ -30,7 +33,11 @@ namespace SecondPractTask
         {
             Window1 window1 = new Window1();
             window1.PizzasData.ItemsSource = Pizza.GetData();
+            //window1.ChooseItemComboBox.ItemsSource = window1.PizzasData.Columns;
+            
             window1.Show();
+            
+
         }
 
         private void PiesDataBaseButton_Click(object sender, RoutedEventArgs e)

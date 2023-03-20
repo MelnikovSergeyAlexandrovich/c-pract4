@@ -7,6 +7,49 @@
         mc:Ignorable="d"
         Title="Window3" Height="450" Width="800">
     <Grid>
-        <DataGrid x:Name="PiesData"></DataGrid>
+        <DataGrid x:Name="PiesData" Height="250" VerticalAlignment="Top"></DataGrid>
+        <Button x:Name="DeletePiesButton"
+        Style="{StaticResource MaterialDesignOutlinedButton}"
+        VerticalAlignment="Bottom"
+        HorizontalAlignment="Left"
+        Margin="10 0 20 120"
+        Content="Удалить выбранное значение "
+        IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"  Cursor="Hand" Click="DeletePiesButton_Click" />
+
+        <TextBox x:Name="PPTBfortext2"
+        VerticalAlignment="Bottom"
+        HorizontalAlignment="Left"
+        Margin="10 120 10 50"
+        Width="300"
+        Height="35" />
+        <TextBlock VerticalAlignment="Bottom"
+        HorizontalAlignment="Left"
+        Margin="60 120 10 25"
+                   Width="200"
+                   TextAlignment="Center" Text="Изменить топпинг пирога" />
+
+        
+        <Button x:Name="SelectionButton"
+  Style="{StaticResource MaterialDesignPaperButton}"
+  VerticalAlignment="Bottom"
+            HorizontalAlignment="Center"
+            Width="150"
+            Height="25"
+  ToolTip="Resource name: MaterialDesignPaperButton"
+  Content="Выбрать ячейку"
+            Margin="60 120 120 120"
+  IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}" Cursor="Hand" Click="SelectionButton_Click" />
+
+        
+
+        <Button x:Name="PiesChangeElementButton"
+  Style="{StaticResource MaterialDesignOutlinedLightButton}"
+  ToolTip="MaterialDesignOutlinedButton"
+  Content="Внести изменения"
+  HorizontalAlignment="Right"
+      VerticalAlignment="Bottom"
+      Margin="50 50 70 50"
+  IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}" Click="PiesChangeElementButton_Click" />
+        
     </Grid>
 </Window>

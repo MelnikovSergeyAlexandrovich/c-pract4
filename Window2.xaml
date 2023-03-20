@@ -7,6 +7,14 @@
         mc:Ignorable="d"
         Title="Window2" Height="450" Width="800">
     <Grid>
-        <DataGrid x:Name="BakeryData"></DataGrid>
+        <DataGrid x:Name="BakeryData" Height="250" VerticalAlignment="Top"></DataGrid>
+        <Button x:Name="DeleteBakeryButton"
+        Style="{StaticResource MaterialDesignOutlinedButton}"
+        VerticalAlignment="Bottom"
+        HorizontalAlignment="Center"
+        Margin="0 0 0 80"
+        Content="Удалить выбранное значение "
+        IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}" Click="DeleteBakeryButton_Click" Cursor="Hand" />
+
     </Grid>
 </Window>

@@ -36,8 +36,6 @@ namespace SecondPractTask {
         
         private sizesDataTable tablesizes;
         
-        private global::System.Data.DataRelation relationFK__bakerySho__id_pi__440B1D61;
-        
         private global::System.Data.DataRelation relationFK__bakerySho__id_pi__656C112C;
         
         private global::System.Data.DataRelation relationFK__bakerySho__shops__6477ECF3;
@@ -45,6 +43,8 @@ namespace SecondPractTask {
         private global::System.Data.DataRelation relationFK__pies__size_id__628FA481;
         
         private global::System.Data.DataRelation relationFK__pizzas__diameter__6383C8BA;
+        
+        private global::System.Data.DataRelation relationFK__bakerySho__id_pi__440B1D61;
         
         private global::System.Data.SchemaSerializationMode _schemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
         
@@ -324,11 +324,11 @@ namespace SecondPractTask {
                     this.tablesizes.InitVars();
                 }
             }
-            this.relationFK__bakerySho__id_pi__440B1D61 = this.Relations["FK__bakerySho__id pi__440B1D61"];
             this.relationFK__bakerySho__id_pi__656C112C = this.Relations["FK__bakerySho__id pi__656C112C"];
             this.relationFK__bakerySho__shops__6477ECF3 = this.Relations["FK__bakerySho__shops__6477ECF3"];
             this.relationFK__pies__size_id__628FA481 = this.Relations["FK__pies__size id__628FA481"];
             this.relationFK__pizzas__diameter__6383C8BA = this.Relations["FK__pizzas__diameter__6383C8BA"];
+            this.relationFK__bakerySho__id_pi__440B1D61 = this.Relations["FK__bakerySho__id pi__440B1D61"];
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -351,10 +351,6 @@ namespace SecondPractTask {
             base.Tables.Add(this.tableshops);
             this.tablesizes = new sizesDataTable();
             base.Tables.Add(this.tablesizes);
-            this.relationFK__bakerySho__id_pi__440B1D61 = new global::System.Data.DataRelation("FK__bakerySho__id pi__440B1D61", new global::System.Data.DataColumn[] {
-                        this.tablepizzas.id_pizzaColumn}, new global::System.Data.DataColumn[] {
-                        this.tablebakeryShop.id_pizzaColumn}, false);
-            this.Relations.Add(this.relationFK__bakerySho__id_pi__440B1D61);
             this.relationFK__bakerySho__id_pi__656C112C = new global::System.Data.DataRelation("FK__bakerySho__id pi__656C112C", new global::System.Data.DataColumn[] {
                         this.tablepies.id_pieColumn}, new global::System.Data.DataColumn[] {
                         this.tablebakeryShop.id_pieColumn}, false);
@@ -371,6 +367,10 @@ namespace SecondPractTask {
                         this.tablediameter.diameter_idColumn}, new global::System.Data.DataColumn[] {
                         this.tablepizzas.diameter_idColumn}, false);
             this.Relations.Add(this.relationFK__pizzas__diameter__6383C8BA);
+            this.relationFK__bakerySho__id_pi__440B1D61 = new global::System.Data.DataRelation("FK__bakerySho__id pi__440B1D61", new global::System.Data.DataColumn[] {
+                        this.tablepizzas.id_pizzaColumn}, new global::System.Data.DataColumn[] {
+                        this.tablebakeryShop.id_pizzaColumn}, false);
+            this.Relations.Add(this.relationFK__bakerySho__id_pi__440B1D61);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2297,17 +2297,6 @@ namespace SecondPractTask {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public pizzasRow pizzasRow {
-                get {
-                    return ((pizzasRow)(this.GetParentRow(this.Table.ParentRelations["FK__bakerySho__id pi__440B1D61"])));
-                }
-                set {
-                    this.SetParentRow(value, this.Table.ParentRelations["FK__bakerySho__id pi__440B1D61"]);
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public piesRow piesRow {
                 get {
                     return ((piesRow)(this.GetParentRow(this.Table.ParentRelations["FK__bakerySho__id pi__656C112C"])));
@@ -2325,6 +2314,17 @@ namespace SecondPractTask {
                 }
                 set {
                     this.SetParentRow(value, this.Table.ParentRelations["FK__bakerySho__shops__6477ECF3"]);
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public pizzasRow pizzasRow {
+                get {
+                    return ((pizzasRow)(this.GetParentRow(this.Table.ParentRelations["FK__bakerySho__id pi__440B1D61"])));
+                }
+                set {
+                    this.SetParentRow(value, this.Table.ParentRelations["FK__bakerySho__id pi__440B1D61"]);
                 }
             }
         }
@@ -3002,19 +3002,24 @@ SELECT [bakeryShop id], [id pizza], [id pie], [shops id] FROM bakeryShop WHERE (
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         private void InitCommandCollection() {
-            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[2];
+            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[3];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
             this._commandCollection[0].CommandText = "SELECT [bakeryShop id], [id pizza], [id pie], [shops id] FROM dbo.bakeryShop";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[1] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[1].Connection = this.Connection;
-            this._commandCollection[1].CommandText = "INSERT INTO [dbo].[bakeryShop] ([id pizza], [id pie], [shops id]) VALUES (@id_piz" +
-                "za, @id_pie, @shops_id);\r\n";
+            this._commandCollection[1].CommandText = "DELETE FROM bakeryShop\r\nWHERE        ([bakeryShop id] = @Original_bakeryShop_id)";
             this._commandCollection[1].CommandType = global::System.Data.CommandType.Text;
-            this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@id_pizza", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "id pizza", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@id_pie", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "id pie", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@shops_id", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "shops id", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_bakeryShop_id", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "bakeryShop id", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._commandCollection[2] = new global::System.Data.SqlClient.SqlCommand();
+            this._commandCollection[2].Connection = this.Connection;
+            this._commandCollection[2].CommandText = "INSERT INTO [dbo].[bakeryShop] ([id pizza], [id pie], [shops id]) VALUES (@id_piz" +
+                "za, @id_pie, @shops_id);\r\n";
+            this._commandCollection[2].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[2].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@id_pizza", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "id pizza", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[2].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@id_pie", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "id pie", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[2].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@shops_id", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "shops id", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -3159,9 +3164,33 @@ SELECT [bakeryShop id], [id pizza], [id pie], [shops id] FROM bakeryShop WHERE (
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, false)]
+        public virtual int DeleteQuery(int Original_bakeryShop_id) {
+            global::System.Data.SqlClient.SqlCommand command = this.CommandCollection[1];
+            command.Parameters[0].Value = ((int)(Original_bakeryShop_id));
+            global::System.Data.ConnectionState previousConnectionState = command.Connection.State;
+            if (((command.Connection.State & global::System.Data.ConnectionState.Open) 
+                        != global::System.Data.ConnectionState.Open)) {
+                command.Connection.Open();
+            }
+            int returnValue;
+            try {
+                returnValue = command.ExecuteNonQuery();
+            }
+            finally {
+                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
+                    command.Connection.Close();
+                }
+            }
+            return returnValue;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, false)]
         public virtual int InsertQuery(int id_pizza, int id_pie, int shops_id) {
-            global::System.Data.SqlClient.SqlCommand command = this.CommandCollection[1];
+            global::System.Data.SqlClient.SqlCommand command = this.CommandCollection[2];
             command.Parameters[0].Value = ((int)(id_pizza));
             command.Parameters[1].Value = ((int)(id_pie));
             command.Parameters[2].Value = ((int)(shops_id));
@@ -3646,18 +3675,30 @@ SELECT [bakeryShop id], [id pizza], [id pie], [shops id] FROM bakeryShop WHERE (
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         private void InitCommandCollection() {
-            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[2];
+            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[4];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
             this._commandCollection[0].CommandText = "SELECT [id pie], topping, [size id] FROM dbo.pies";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[1] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[1].Connection = this.Connection;
-            this._commandCollection[1].CommandText = "INSERT INTO [dbo].[pies] ([topping], [size id]) VALUES (@topping, @size_id);\r\nSEL" +
-                "ECT [id pie], topping, [size id] FROM pies WHERE ([id pie] = SCOPE_IDENTITY())";
+            this._commandCollection[1].CommandText = "DELETE FROM pies\r\nWHERE        ([id pie] = @Original_id_pie)";
             this._commandCollection[1].CommandType = global::System.Data.CommandType.Text;
-            this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@topping", global::System.Data.SqlDbType.VarChar, 20, global::System.Data.ParameterDirection.Input, 0, 0, "topping", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@size_id", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "size id", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_id_pie", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "id pie", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._commandCollection[2] = new global::System.Data.SqlClient.SqlCommand();
+            this._commandCollection[2].Connection = this.Connection;
+            this._commandCollection[2].CommandText = "INSERT INTO [dbo].[pies] ([topping], [size id]) VALUES (@topping, @size_id);\r\nSEL" +
+                "ECT [id pie], topping, [size id] FROM pies WHERE ([id pie] = SCOPE_IDENTITY())";
+            this._commandCollection[2].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[2].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@topping", global::System.Data.SqlDbType.VarChar, 20, global::System.Data.ParameterDirection.Input, 0, 0, "topping", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[2].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@size_id", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "size id", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[3] = new global::System.Data.SqlClient.SqlCommand();
+            this._commandCollection[3].Connection = this.Connection;
+            this._commandCollection[3].CommandText = "UPDATE [dbo].[pies] SET [topping] = @topping WHERE ([id pie] = @Original_id_pie) " +
+                "";
+            this._commandCollection[3].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[3].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@topping", global::System.Data.SqlDbType.VarChar, 20, global::System.Data.ParameterDirection.Input, 0, 0, "topping", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[3].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_id_pie", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "id pie", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -3689,7 +3730,7 @@ SELECT [bakeryShop id], [id pizza], [id pie], [shops id] FROM bakeryShop WHERE (
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, false)]
         public virtual dataWPFDataSet.piesDataTable GetInsertData(string topping, int size_id) {
-            this.Adapter.SelectCommand = this.CommandCollection[1];
+            this.Adapter.SelectCommand = this.CommandCollection[2];
             if ((topping == null)) {
                 throw new global::System.ArgumentNullException("topping");
             }
@@ -3831,6 +3872,60 @@ SELECT [bakeryShop id], [id pizza], [id pie], [shops id] FROM bakeryShop WHERE (
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
         public virtual int Update(string topping, int size_id, int Original_id_pie, string Original_topping, int Original_size_id) {
             return this.Update(topping, size_id, Original_id_pie, Original_topping, Original_size_id, Original_id_pie);
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, false)]
+        public virtual int DeleteQuery(int Original_id_pie) {
+            global::System.Data.SqlClient.SqlCommand command = this.CommandCollection[1];
+            command.Parameters[0].Value = ((int)(Original_id_pie));
+            global::System.Data.ConnectionState previousConnectionState = command.Connection.State;
+            if (((command.Connection.State & global::System.Data.ConnectionState.Open) 
+                        != global::System.Data.ConnectionState.Open)) {
+                command.Connection.Open();
+            }
+            int returnValue;
+            try {
+                returnValue = command.ExecuteNonQuery();
+            }
+            finally {
+                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
+                    command.Connection.Close();
+                }
+            }
+            return returnValue;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, false)]
+        public virtual int UpdateQuery(string topping, int Original_id_pie) {
+            global::System.Data.SqlClient.SqlCommand command = this.CommandCollection[3];
+            if ((topping == null)) {
+                throw new global::System.ArgumentNullException("topping");
+            }
+            else {
+                command.Parameters[0].Value = ((string)(topping));
+            }
+            command.Parameters[1].Value = ((int)(Original_id_pie));
+            global::System.Data.ConnectionState previousConnectionState = command.Connection.State;
+            if (((command.Connection.State & global::System.Data.ConnectionState.Open) 
+                        != global::System.Data.ConnectionState.Open)) {
+                command.Connection.Open();
+            }
+            int returnValue;
+            try {
+                returnValue = command.ExecuteNonQuery();
+            }
+            finally {
+                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
+                    command.Connection.Close();
+                }
+            }
+            return returnValue;
         }
     }
     
@@ -4004,20 +4099,33 @@ SELECT [id pizza], typeOfPizza, [diameter id], price FROM pizzas WHERE ([id pizz
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         private void InitCommandCollection() {
-            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[2];
+            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[4];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
             this._commandCollection[0].CommandText = "SELECT [id pizza], typeOfPizza, [diameter id], price FROM dbo.pizzas";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[1] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[1].Connection = this.Connection;
-            this._commandCollection[1].CommandText = "INSERT INTO [dbo].[pizzas] ([typeOfPizza], [diameter id], [price]) VALUES (@typeO" +
+            this._commandCollection[1].CommandText = "DELETE FROM pizzas\r\nWHERE        ([id pizza] = @Original_id_pizza)";
+            this._commandCollection[1].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_id_pizza", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "id pizza", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._commandCollection[2] = new global::System.Data.SqlClient.SqlCommand();
+            this._commandCollection[2].Connection = this.Connection;
+            this._commandCollection[2].CommandText = "INSERT INTO [dbo].[pizzas] ([typeOfPizza], [diameter id], [price]) VALUES (@typeO" +
                 "fPizza, @diameter_id, @price);\r\nSELECT [id pizza], typeOfPizza, [diameter id], p" +
                 "rice FROM pizzas WHERE ([id pizza] = SCOPE_IDENTITY())";
-            this._commandCollection[1].CommandType = global::System.Data.CommandType.Text;
-            this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@typeOfPizza", global::System.Data.SqlDbType.VarChar, 30, global::System.Data.ParameterDirection.Input, 0, 0, "typeOfPizza", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@diameter_id", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "diameter id", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@price", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "price", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[2].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[2].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@typeOfPizza", global::System.Data.SqlDbType.VarChar, 30, global::System.Data.ParameterDirection.Input, 0, 0, "typeOfPizza", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[2].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@diameter_id", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "diameter id", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[2].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@price", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "price", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[3] = new global::System.Data.SqlClient.SqlCommand();
+            this._commandCollection[3].Connection = this.Connection;
+            this._commandCollection[3].CommandText = "UPDATE       pizzas\r\nSET                typeOfPizza = @typeOfPizza, price = @pric" +
+                "e\r\nWHERE        ([id pizza] = @Original_id_pizza)";
+            this._commandCollection[3].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[3].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@typeOfPizza", global::System.Data.SqlDbType.VarChar, 30, global::System.Data.ParameterDirection.Input, 0, 0, "typeOfPizza", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[3].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@price", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "price", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[3].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_id_pizza", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "id pizza", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -4049,7 +4157,7 @@ SELECT [id pizza], typeOfPizza, [diameter id], price FROM pizzas WHERE ([id pizz
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, false)]
         public virtual dataWPFDataSet.pizzasDataTable InsertAndGet(string typeOfPizza, int diameter_id, int price) {
-            this.Adapter.SelectCommand = this.CommandCollection[1];
+            this.Adapter.SelectCommand = this.CommandCollection[2];
             if ((typeOfPizza == null)) {
                 throw new global::System.ArgumentNullException("typeOfPizza");
             }
@@ -4196,6 +4304,61 @@ SELECT [id pizza], typeOfPizza, [diameter id], price FROM pizzas WHERE ([id pizz
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
         public virtual int Update(string typeOfPizza, int diameter_id, int price, int Original_id_pizza, string Original_typeOfPizza, int Original_diameter_id, int Original_price) {
             return this.Update(typeOfPizza, diameter_id, price, Original_id_pizza, Original_typeOfPizza, Original_diameter_id, Original_price, Original_id_pizza);
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, false)]
+        public virtual int DeleteQuery(int Original_id_pizza) {
+            global::System.Data.SqlClient.SqlCommand command = this.CommandCollection[1];
+            command.Parameters[0].Value = ((int)(Original_id_pizza));
+            global::System.Data.ConnectionState previousConnectionState = command.Connection.State;
+            if (((command.Connection.State & global::System.Data.ConnectionState.Open) 
+                        != global::System.Data.ConnectionState.Open)) {
+                command.Connection.Open();
+            }
+            int returnValue;
+            try {
+                returnValue = command.ExecuteNonQuery();
+            }
+            finally {
+                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
+                    command.Connection.Close();
+                }
+            }
+            return returnValue;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, false)]
+        public virtual int UpdateQuery(string typeOfPizza, int price, int Original_id_pizza) {
+            global::System.Data.SqlClient.SqlCommand command = this.CommandCollection[3];
+            if ((typeOfPizza == null)) {
+                throw new global::System.ArgumentNullException("typeOfPizza");
+            }
+            else {
+                command.Parameters[0].Value = ((string)(typeOfPizza));
+            }
+            command.Parameters[1].Value = ((int)(price));
+            command.Parameters[2].Value = ((int)(Original_id_pizza));
+            global::System.Data.ConnectionState previousConnectionState = command.Connection.State;
+            if (((command.Connection.State & global::System.Data.ConnectionState.Open) 
+                        != global::System.Data.ConnectionState.Open)) {
+                command.Connection.Open();
+            }
+            int returnValue;
+            try {
+                returnValue = command.ExecuteNonQuery();
+            }
+            finally {
+                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
+                    command.Connection.Close();
+                }
+            }
+            return returnValue;
         }
     }
     
@@ -5050,21 +5213,21 @@ SELECT [id pizza], typeOfPizza, [diameter id], price FROM pizzas WHERE ([id pizz
                     allChangedRows.AddRange(updatedRows);
                 }
             }
-            if ((this._pizzasTableAdapter != null)) {
-                global::System.Data.DataRow[] updatedRows = dataSet.pizzas.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
-                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
-                if (((updatedRows != null) 
-                            && (0 < updatedRows.Length))) {
-                    result = (result + this._pizzasTableAdapter.Update(updatedRows));
-                    allChangedRows.AddRange(updatedRows);
-                }
-            }
             if ((this._shopsTableAdapter != null)) {
                 global::System.Data.DataRow[] updatedRows = dataSet.shops.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
                 updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
                 if (((updatedRows != null) 
                             && (0 < updatedRows.Length))) {
                     result = (result + this._shopsTableAdapter.Update(updatedRows));
+                    allChangedRows.AddRange(updatedRows);
+                }
+            }
+            if ((this._pizzasTableAdapter != null)) {
+                global::System.Data.DataRow[] updatedRows = dataSet.pizzas.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
+                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
+                if (((updatedRows != null) 
+                            && (0 < updatedRows.Length))) {
+                    result = (result + this._pizzasTableAdapter.Update(updatedRows));
                     allChangedRows.AddRange(updatedRows);
                 }
             }
@@ -5111,19 +5274,19 @@ SELECT [id pizza], typeOfPizza, [diameter id], price FROM pizzas WHERE ([id pizz
                     allAddedRows.AddRange(addedRows);
                 }
             }
-            if ((this._pizzasTableAdapter != null)) {
-                global::System.Data.DataRow[] addedRows = dataSet.pizzas.Select(null, null, global::System.Data.DataViewRowState.Added);
-                if (((addedRows != null) 
-                            && (0 < addedRows.Length))) {
-                    result = (result + this._pizzasTableAdapter.Update(addedRows));
-                    allAddedRows.AddRange(addedRows);
-                }
-            }
             if ((this._shopsTableAdapter != null)) {
                 global::System.Data.DataRow[] addedRows = dataSet.shops.Select(null, null, global::System.Data.DataViewRowState.Added);
                 if (((addedRows != null) 
                             && (0 < addedRows.Length))) {
                     result = (result + this._shopsTableAdapter.Update(addedRows));
+                    allAddedRows.AddRange(addedRows);
+                }
+            }
+            if ((this._pizzasTableAdapter != null)) {
+                global::System.Data.DataRow[] addedRows = dataSet.pizzas.Select(null, null, global::System.Data.DataViewRowState.Added);
+                if (((addedRows != null) 
+                            && (0 < addedRows.Length))) {
+                    result = (result + this._pizzasTableAdapter.Update(addedRows));
                     allAddedRows.AddRange(addedRows);
                 }
             }
@@ -5153,19 +5316,19 @@ SELECT [id pizza], typeOfPizza, [diameter id], price FROM pizzas WHERE ([id pizz
                     allChangedRows.AddRange(deletedRows);
                 }
             }
-            if ((this._shopsTableAdapter != null)) {
-                global::System.Data.DataRow[] deletedRows = dataSet.shops.Select(null, null, global::System.Data.DataViewRowState.Deleted);
-                if (((deletedRows != null) 
-                            && (0 < deletedRows.Length))) {
-                    result = (result + this._shopsTableAdapter.Update(deletedRows));
-                    allChangedRows.AddRange(deletedRows);
-                }
-            }
             if ((this._pizzasTableAdapter != null)) {
                 global::System.Data.DataRow[] deletedRows = dataSet.pizzas.Select(null, null, global::System.Data.DataViewRowState.Deleted);
                 if (((deletedRows != null) 
                             && (0 < deletedRows.Length))) {
                     result = (result + this._pizzasTableAdapter.Update(deletedRows));
+                    allChangedRows.AddRange(deletedRows);
+                }
+            }
+            if ((this._shopsTableAdapter != null)) {
+                global::System.Data.DataRow[] deletedRows = dataSet.shops.Select(null, null, global::System.Data.DataViewRowState.Deleted);
+                if (((deletedRows != null) 
+                            && (0 < deletedRows.Length))) {
+                    result = (result + this._shopsTableAdapter.Update(deletedRows));
                     allChangedRows.AddRange(deletedRows);
                 }
             }

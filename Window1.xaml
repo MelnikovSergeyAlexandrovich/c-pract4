@@ -7,6 +7,61 @@
         mc:Ignorable="d"
         Title="Window1" Height="450" Width="800">
     <Grid>
-        <DataGrid x:Name="PizzasData"></DataGrid>
+        <TextBox x:Name="PTBfortext2"
+        VerticalAlignment="Bottom"
+        HorizontalAlignment="Left"
+        Margin="10 120 10 50"
+        Width="300"
+        Height="35" />
+        <TextBlock VerticalAlignment="Bottom"
+        HorizontalAlignment="Left"
+        Margin="60 120 10 25"
+                   Width="200"
+                   TextAlignment="Center" Text="Изменить название пиццы" />
+        
+        <TextBlock VerticalAlignment="Bottom"
+        HorizontalAlignment="Right"
+        Margin="70 120 55 100"
+                   Width="200"
+                   TextAlignment="Center" Text="Изменить цену пиццы" />
+        <Button x:Name="SelectButton"
+  Style="{StaticResource MaterialDesignPaperButton}"
+  VerticalAlignment="Bottom"
+            HorizontalAlignment="Center"
+            Width="150"
+            Height="25"
+  ToolTip="Resource name: MaterialDesignPaperButton"
+  Content="Выбрать ячейку"
+            Margin="60 120 120 120"
+  IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}" Click="SelectButton_Click" />
+
+        <TextBox x:Name="PTBfortext"
+        VerticalAlignment="Bottom"
+        HorizontalAlignment="Right"
+        Margin="120 120 10 120"
+        Width="300"
+        Height="35"  />
+
+        <DataGrid x:Name="PizzasData" Height="250" VerticalAlignment="Top" CanUserResizeRows="False" >
+        </DataGrid>
+        
+        <Button x:Name="DeletePizzaButton"
+        Style="{StaticResource MaterialDesignOutlinedButton}"
+        VerticalAlignment="Bottom"
+        HorizontalAlignment="Left"
+        Margin="10 0 20 120"
+        Content="Удалить выбранное значение "
+        IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}" Click="DeletePizzaButton_Click" Cursor="Hand" />
+        
+        
+        
+  <Button x:Name="PChangeElementButton"
+  Style="{StaticResource MaterialDesignOutlinedLightButton}"
+  ToolTip="MaterialDesignOutlinedButton"
+  Content="Внести изменения"
+  HorizontalAlignment="Right"
+      VerticalAlignment="Bottom"
+      Margin="50 50 70 50"
+  IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}" Click="PChangeElementButton_Click" />
     </Grid>
 </Window>
